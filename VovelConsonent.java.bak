@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class vovel1 {
+public class VovelConsonent {
     public static void main(String[] args){
         Scanner sc= new Scanner (System.in);
         System.out.println("Enter the Character:");
