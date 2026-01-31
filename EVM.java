@@ -52,6 +52,23 @@ public class EVM {
         System.out.println("aap: "+aap);
         System.out.println("nota: "+nota);
 
+        if(bjp>=cong && bjp >=mns && bjp >= aap&& bjp>=nota){
+            System.out.println("BJP HAS WON"+bjp);
+        }
+        else if(cong>=mns && cong>=bjp && cong>= nota && cong>= aap){
+            System.out.println("CONG IS WON"+cong);
+
+        }
+        else if(mns>=cong && mns>=bjp && mns>=nota && mns>= aap){
+            System.out.println("MNS IS WON :" +mns);
+        }
+        else if(aap >=bjp && aap>=mns && aap>= nota && aap>=cong){
+            System.out.println("AAP IS WON"+aap);
+        }
+        else{
+            System.out.println("NOTA IS WON"+nota);
+        }
+
     }
     
 }
