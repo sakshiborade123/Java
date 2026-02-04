@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.time.LocalDateTime;
 public class Bank {
     static String name;
         static String address;
@@ -7,6 +9,8 @@ public class Bank {
         static double balance;
         static String pancard;
         static int pin;
+        static LocalDateTime a;//null
+        static ArrayList<String> transaction= new ArrayList<String>();
     public static void main(String[] args){
         Scanner sc= new Scanner(System.in);
         welcomeloop:
@@ -41,7 +45,9 @@ public class Bank {
 
                 System.out.println("Enter the Amount: ");
                 balance= new Scanner(System.in).nextDouble();
-
+                a= LocalDateTime.now();
+                transaction.add("Deposit (Creation): "+balance+ "rs."+(a.getHour()) %12+": "+a.getMinute()+":"+a.getSecond());
+                transaction.add("Deposit (Creation) : "+balance);
                 System.out.println("Pin: ");
                 pin= new Scanner(System.in).nextInt();
                 
@@ -67,7 +73,7 @@ public class Bank {
                     features:
                     for( ; ;){
                         System.out.println("\n ****Feactures*****\n");
-                        System.out.println("1.Deposit \n 2.Withdraw \n3.Check Balance \n4.LogOut");
+                        System.out.println("1.Deposit \n 2.Withdraw \n3.Check Balance \n4. Transaction \n5.LogOut");
                         System.out.println("Enter your option:");
                         int opt= sc.nextInt();
                         switch(opt){
@@ -76,6 +82,7 @@ public class Bank {
                                 System.out.println("Enter deposit amount:");
                                 double deptamt= new Scanner(System.in).nextDouble();
                                 balance+=deptamt;
+                                transaction.add("Deposit: "+deptamt);
                                 System.out.println("\n Amount deposited Successfully\n");
                                 break;
                             }
@@ -88,6 +95,7 @@ public class Bank {
                                 if(pin2==pin){
                                     if(wrdwammout<=balance){
                                         balance-=wrdwammout;
+                                        transaction.add("Withdraw: "+wrdwammout);
                                         System.out.println("\n Amount debited successfully\n");
                                     }
                                     else{
@@ -114,7 +122,16 @@ public class Bank {
                                 }
                                 break;
                             }
-                            case 4:{
+                             case 4:{
+                                System.out.println("\n****Transaction ****\n");
+                                for(String ele: transaction){
+                                    System.out.println(ele);
+                                }
+                                System.out.println();
+                                break;
+                               
+                            }
+                            case 5:{
                                 System.out.println("\n Thank U & Visit Again \n");
                                 continue welcomeloop;
 
