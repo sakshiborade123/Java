@@ -1,0 +1,6 @@
+public class PI1 {
+    public static void main(String[] args){
+        System.out.println(PI.pi);
+    }
+    
+}
